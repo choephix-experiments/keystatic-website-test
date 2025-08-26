@@ -18,16 +18,20 @@ export default async function Post(props: {
 
   const errors = Markdoc.validate(node, markdocConfig);
   if (errors.length) {
-    console.error(errors);
+    console.error('🚨 Markdoc validation errors:', errors);
     throw new Error('Invalid content');
   }
 
   const renderable = Markdoc.transform(node, markdocConfig);
 
   return (
-    <div>
-      <h1>{post.title}</h1>
-      {Markdoc.renderers.react(renderable, React)}
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <article className="bg-white rounded-lg shadow-md p-8">
+        <h1 className="text-4xl font-bold text-gray-900 mb-6">{post.title}</h1>
+        <div className="prose prose-lg max-w-none">
+          {Markdoc.renderers.react(renderable, React)}
+        </div>
+      </article>
     </div>
   );
 }

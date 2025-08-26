@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { reader } from './reader';
+import { reader } from '../reader';
 
-import './styles.css';
+import '../styles.css';
 
 export default async function Homepage() {
   const posts = await reader.collections.posts.all();
@@ -12,7 +12,7 @@ export default async function Homepage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Hero Section */}
       <section className="text-center py-20 px-4">
         <h1 className="text-5xl font-bold text-gray-900 mb-6">
@@ -84,16 +84,6 @@ export default async function Homepage() {
           </div>
         </div>
       </section>
-
-      {/* Admin Link */}
-      <div className="text-center py-8 bg-gray-100">
-        <Link
-          href="/keystatic"
-          className="text-blue-600 hover:text-blue-800 font-medium"
-        >
-          📝 Manage Content in Admin UI
-        </Link>
-      </div>
     </div>
   );
 }
