@@ -1,4 +1,4 @@
-import { config, collection, fields } from '@keystatic/core';
+import { config, collection, singleton, fields } from '@keystatic/core';
 
 export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
@@ -17,29 +17,26 @@ export default config({
         content: fields.markdoc({ label: 'Content' }),
       },
     }),
-    landingPage: collection({
+  },
+  singletons: {
+    landing: singleton({
       label: 'Landing Page',
-      slugField: 'title',
-      path: 'content/landing/*',
-      format: { contentField: 'content' },
+      path: 'content/landing/content',
+      format: { data: 'yaml' },
       schema: {
-        title: fields.slug({ name: { label: 'Title' } }),
-        description: fields.text({ label: 'Meta Description', multiline: true }),
-        hero: fields.object({
-          title: fields.text({ label: 'Hero Title' }),
-          subtitle: fields.text({ label: 'Hero Subtitle', multiline: true }),
-          ctaText: fields.text({ label: 'CTA Button Text' }),
-          ctaLink: fields.text({ label: 'CTA Button Link' }),
-        }, { label: 'Hero Section' }),
+        title: fields.text({ label: 'Title' }),
+        subtitle: fields.text({ label: 'Subtitle' }),
+        heroImage: fields.image({ label: 'Hero Image', directory: 'public/images' }),
         features: fields.array(
           fields.object({
             title: fields.text({ label: 'Feature Title' }),
-            description: fields.text({ label: 'Feature Description', multiline: true }),
-            icon: fields.text({ label: 'Icon Name' }),
+            description: fields.text({ label: 'Feature Description' }),
+            icon: fields.text({ label: 'Icon (emoji or icon name)' }),
           }),
           { label: 'Features', itemLabel: (props) => props.fields.title.value || 'Feature' }
         ),
-        content: fields.markdoc({ label: 'Content' }),
+        ctaText: fields.text({ label: 'Call to Action Text' }),
+        ctaLink: fields.text({ label: 'Call to Action Link' }),
       },
     }),
   },
