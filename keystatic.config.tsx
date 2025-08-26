@@ -28,7 +28,7 @@ export default config({
   singletons: {
     landing: singleton({
       label: "Landing Page",
-      path: "content/landing/content",
+      path: "content/landing",
       format: { data: "yaml" },
       schema: {
         title: fields.text({ label: "Title" }),
@@ -52,5 +52,54 @@ export default config({
         ctaLink: fields.text({ label: "Call to Action Link" }),
       },
     }),
+    termsOfService: singleton({
+      label: "Terms of Service",
+      path: "content/terms-of-service",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.text({ label: "Title" }),
+        content: fields.markdoc({ label: "Content" }),
+        // lastUpdated: fields.date({ label: "Last Updated" }),
+      },
+    }),
+    privacyPolicy: singleton({
+      label: "Privacy Policy",
+      path: "content/privacy-policy",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.text({ label: "Title" }),
+        content: fields.markdoc({ label: "Content" }),
+        // lastUpdated: fields.date({ label: "Last Updated" }),
+      },
+    }),
+    cookiePolicy: singleton({
+      label: "Cookie Policy",
+      path: "content/cookie-policy",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.text({ label: "Title" }),
+        content: fields.markdoc({ label: "Content" }),
+        // lastUpdated: fields.date({ label: "Last Updated" }),
+      },
+    }),
+  },
+  ui: {
+    brand: {
+      name: "Nilo.io • Admin Dash",
+      mark: ({}) => (
+        <a href="/">
+          <img
+            src="/images/nilo-n.svg"
+            alt="Nilo.io"
+            style={{
+              marginLeft: ".75rem",
+              paddingTop: ".25rem",
+              height: "1rem",
+              width: "1rem",
+            }}
+          />
+        </a>
+      ),
+    },
   },
 });

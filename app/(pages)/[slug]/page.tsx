@@ -1,8 +1,8 @@
-import '../styles.css';
+import '../../styles.css';
 import React from 'react';
 import Markdoc from '@markdoc/markdoc';
-import { reader } from '../reader';
-import { markdocConfig } from '../../keystatic.config';
+import { reader } from '../../reader';
+import { markdocConfig } from '../../../keystatic.config';
 
 export default async function Post(props: {
   params: Promise<{ slug: string }>;
