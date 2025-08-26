@@ -5,7 +5,7 @@ export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 export default config({
   storage: {
     kind: "github",
-    // repo: "nilo-technologies/Nilo-Website",
+    //// repo: "nilo-technologies/Nilo-Website",
     repo: "choephix-experiments/keystatic-website-test",
     branchPrefix: "keystatic/",
   },
