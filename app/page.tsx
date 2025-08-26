@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { reader } from './reader';
+
 import './styles.css';
 
 export default async function Homepage() {
