@@ -2,13 +2,17 @@ import { config, collection, singleton, fields } from "@keystatic/core";
 
 export const markdocConfig = fields.markdoc.createMarkdocConfig({});
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export default config({
-  storage: {
-    kind: "github",
-    //// repo: "nilo-technologies/Nilo-Website",
-    repo: "choephix-experiments/keystatic-website-test",
-    branchPrefix: "keystatic/",
-  },
+  storage: isProduction
+    ? {
+        kind: "github",
+        repo: { owner: "choephix-experiments", name: "keystatic-website-test" },
+      }
+    : {
+        kind: "local",
+      },
   collections: {
     posts: collection({
       label: "Posts",
