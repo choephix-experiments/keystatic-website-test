@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { reader } from '../reader';
 
-import '../styles.css';
+import { reader } from '@/app/reader';
+
+import '@/app/styles.css';
 
 export default async function Homepage() {
   const posts = await reader.collections.posts.all();
@@ -74,7 +75,7 @@ export default async function Homepage() {
                 key={post.slug}
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
               >
-                <Link href={`/${post.slug}`} className="block">
+                <Link href={`/blog/${post.slug}`} className="block">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2 hover:text-blue-600">
                     {post.entry.title}
                   </h3>
